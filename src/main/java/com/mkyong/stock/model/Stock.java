@@ -1,7 +1,13 @@
 package com.mkyong.stock.model;
 
+import javax.persistence.*;
 import java.io.Serializable;
 
+@Entity
+// catalog = "mkyong"
+@Table(name = "stock", uniqueConstraints = {
+        @UniqueConstraint(columnNames = "STOCK_NAME"),
+        @UniqueConstraint(columnNames = "STOCK_CODE") })
 public class Stock implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -10,7 +16,17 @@ public class Stock implements Serializable {
     private String stockCode;
     private String stockName;
 
+    public Stock() {
+    }
 
+    public Stock(String stockCode, String stockName) {
+        this.stockCode = stockCode;
+        this.stockName = stockName;
+    }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "STOCK_ID", unique = true, nullable = false)
     public Long getStockId() {
         return stockId;
     }
@@ -19,6 +35,7 @@ public class Stock implements Serializable {
         this.stockId = stockId;
     }
 
+    @Column(name = "STOCK_CODE", unique = true, nullable = false, length = 10)
     public String getStockCode() {
         return stockCode;
     }
@@ -27,6 +44,7 @@ public class Stock implements Serializable {
         this.stockCode = stockCode;
     }
 
+    @Column(name = "STOCK_NAME", unique = true, nullable = false, length = 20)
     public String getStockName() {
         return stockName;
     }
@@ -37,7 +55,7 @@ public class Stock implements Serializable {
 
 	@Override
 	public String toString() {
-		return "[stockId=" + stockId + ", stockCode=" + stockCode + ", stockName=" + stockName + "] : "
+		return "Stock [stockId=" + stockId + ", stockCode=" + stockCode + ", stockName=" + stockName + "] : "
 				+ super.toString();
 	}
 }

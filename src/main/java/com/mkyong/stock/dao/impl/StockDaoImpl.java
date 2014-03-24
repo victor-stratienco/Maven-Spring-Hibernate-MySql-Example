@@ -2,12 +2,15 @@ package com.mkyong.stock.dao.impl;
 
 import java.util.List;
 
+import com.mkyong.util.CustomHibernateDaoSupport;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.mkyong.stock.dao.StockDao;
 import com.mkyong.stock.model.Stock;
+import org.springframework.stereotype.Repository;
 
-public class StockDaoImpl extends HibernateDaoSupport implements StockDao{
+@Repository("stockDao")
+public class StockDaoImpl extends CustomHibernateDaoSupport implements StockDao{
 
     public void save(Stock stock){
         getHibernateTemplate().save(stock);
