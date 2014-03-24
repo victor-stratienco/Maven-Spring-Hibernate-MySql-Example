@@ -2,26 +2,26 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
-        <!--CREATE TABLE stock (-->
-        <!--STOCK_ID integer identity,-->
-        <!--STOCK_CODE VARCHAR(10) NOT NULL,-->
-        <!--STOCK_NAME VARCHAR(20) NOT NULL,-->
-        <!--UNIQUE (STOCK_NAME),-->
-        <!--UNIQUE (STOCK_CODE)-->
-        <!--);-->
+<!--CREATE TABLE stock (-->
+<!--STOCK_ID integer identity,-->
+<!--STOCK_CODE VARCHAR(10) NOT NULL,-->
+<!--STOCK_NAME VARCHAR(20) NOT NULL,-->
+<!--UNIQUE (STOCK_NAME),-->
+<!--UNIQUE (STOCK_CODE)-->
+<!--);-->
 
 <hibernate-mapping>
     <!-- catalog="mkyong" -->
     <class name="com.mkyong.stock.model.Stock" table="stock">
         <id name="stockId" type="java.lang.Long">
-            <column name="STOCK_ID" />
-            <generator class="identity" />
+            <column name="STOCK_ID"/>
+            <generator class="identity"/>
         </id>
         <property name="stockCode" type="string">
-            <column name="STOCK_CODE" length="10" not-null="true" unique="true" />
+            <column name="STOCK_CODE" length="10" not-null="true" unique="true"/>
         </property>
         <property name="stockName" type="string">
-            <column name="STOCK_NAME" length="20" not-null="true" unique="true" />
+            <column name="STOCK_NAME" length="20" not-null="true" unique="true"/>
         </property>
     </class>
 </hibernate-mapping>
